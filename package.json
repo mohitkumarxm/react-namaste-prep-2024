@@ -4,14 +4,15 @@
   "description": "prep",
   "main": "App.js",
   "scripts": {
-    "start": "parcel index.hmtl",
+    "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },
   "author": "Mohit",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.13.2"
+    "parcel": "^2.13.2",
+    "process": "^0.11.10"
   },
   "dependencies": {
     "react": "^19.0.0",
