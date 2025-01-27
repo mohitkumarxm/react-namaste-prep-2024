@@ -3,12 +3,14 @@ import resList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { NavLink } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // Local State Variable - Super powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const onlineStatus = useOnlineStatus();
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,6 +32,14 @@ const Body = () => {
       )
     );
   };
+
+  if (onlineStatus === false) {
+    return (
+      <h2>
+        Looks like you are offline!!. Please check your internet connection.
+      </h2>
+    );
+  }
 
   console.log("fetched Data ==", listOfRestaurants);
   return listOfRestaurants.length === 0 ? (
