@@ -1,7 +1,7 @@
 import React from "react";
 
 const Grocery = () => {
-  return <div></div>;
+  return <div>in the grocery</div>;
 };
 
 export default Grocery;
