@@ -1,7 +1,6 @@
 import React from "react";
-import UserChildClass from "./UserChildClass";
 
-class UserClass extends React.Component {
+class UserChildClass extends React.Component {
   constructor(props) {
     super(props);
 
@@ -9,15 +8,15 @@ class UserClass extends React.Component {
       count: 1,
       count2: 2,
     };
-    console.log("User Class Component constructor");
+    console.log("User Child Class Component constructor");
   }
   componentDidMount() {
-    console.log("User Class Component Did Mount");
+    console.log("User Child Class Component Did Mount");
   }
   render() {
     const { name, location } = this.props;
     const { count, count2 } = this.state;
-    console.log("User Class Component render");
+    console.log("User Child Class Component render");
     return (
       <div>
         <div>Class Component</div>
@@ -27,10 +26,6 @@ class UserClass extends React.Component {
           {count}
           {count2}
         </div>
-        <UserChildClass
-          name={"User child Class Component"}
-          location={"Noida"}
-        />
         <button
           onClick={() => {
             this.setState({
@@ -46,4 +41,4 @@ class UserClass extends React.Component {
   }
 }
 
-export default UserClass;
+export default UserChildClass;
