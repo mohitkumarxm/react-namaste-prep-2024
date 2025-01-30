@@ -8,32 +8,32 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between bg-pink-100 shadow-2xl shadow-amber-200">
       <div className="">
-        <img className="w-56" src={LOGO_URL} />
+        <img className="w-36" src={LOGO_URL} />
       </div>
-      <div>
-        <ul className="flex justify-around m-4 p-4">
+      <div className="flex items-center">
+        <ul className="flex justify-around m-4 p-4 items-center">
           <li>Online Status:{onlineStatus ? "✅" : "🔴"}</li>
-          <li>
+          <li className="px-4">
             <NavLink to="/" end>
               Home
             </NavLink>
           </li>
-          <li>
+          <li className="px-4">
             <NavLink to="/grocery" end>
               Grocery
             </NavLink>
           </li>
-          <li>
+          <li className="px-4">
             <NavLink to="/about" end>
               About Us
             </NavLink>
           </li>
-          <li>
+          <li className="px-4">
             <NavLink to="/contact">Contact Us</NavLink>
           </li>
-          <li>
+          <li className="px-4">
             <NavLink to="/cart">Cart</NavLink>
           </li>
           <button
