@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import resList from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { openRestaurant } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { NavLink } from "react-router";
+
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
@@ -11,6 +11,9 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
+
+  const WithOpenStatusRestaurantCard = openRestaurant(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -83,9 +86,13 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap justify-center">
         {filteredRestaurant.map((res) => (
-          <NavLink to={"restaurants/" + res.id} key={res.id}>
-            <RestaurantCard resData={res} />
-          </NavLink>
+          <div key={res.id}>
+            {res.totalRatingsString > 150 ? (
+              <WithOpenStatusRestaurantCard resData={res} />
+            ) : (
+              <RestaurantCard resData={res} />
+            )}
+          </div>
         ))}
       </div>
     </div>

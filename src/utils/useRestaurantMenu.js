@@ -11,8 +11,7 @@ const useRestaurantMenu = (resId) => {
     const json = await data.json();
 
     const itemCards =
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards;
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
     console.log("data=", json);
     console.log("itemCards=", itemCards);
 
