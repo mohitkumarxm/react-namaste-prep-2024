@@ -9,21 +9,30 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
   const [resInfo, resDetails] = useRestaurantMenu(resId);
 
+  const [showIndex, setShowIndex] = useState(0);
+
   if (resInfo === null) {
     return <Shimmer />;
   }
-  console.log("RestaurantMenu = ", resInfo);
+
   const newResList = resInfo.filter((item) => item?.card?.card?.title);
   const { name, cuisines, costForTwoMessage } =
     resDetails?.data?.cards[2]?.card?.card?.info;
-  console.log("newResList = ", newResList);
+
   return (
     <div className="menu-container text-center">
       <h1 className="text-4xl font-bold py-10">{name}</h1>
       <div className="w-full grid grid-cols-1 px-4">
         <div className="w-full max-w-5xl mx-auto space-y-2">
           {newResList.map((item, index) => (
-            <RestaurantCategory resMenu={item} key={index} />
+            <RestaurantCategory
+              resMenu={item}
+              key={item?.card?.card?.title}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() =>
+                index === showIndex ? setShowIndex(null) : setShowIndex(index)
+              }
+            />
           ))}
         </div>
       </div>

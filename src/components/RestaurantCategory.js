@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import ItemsList from "./ItemsList";
 import SingleDish from "./SingleDish";
 
-const RestaurantCategory = ({ resMenu }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const RestaurantCategory = ({ resMenu, setShowIndex, showItems }) => {
   console.log("RestaurantCategory = ", resMenu);
 
   return (
@@ -14,7 +12,7 @@ const RestaurantCategory = ({ resMenu }) => {
         <div className="w-full m-4 bg-gray-100 rounded-md shadow-md">
           <button
             className="w-full  p-4 transition duration-300"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setShowIndex()}
           >
             <div className="flex justify-between items-center gap-2">
               <span className="text-lg font-bold  px- 4 text-left w-[90%] md:w-[95%]">
@@ -22,13 +20,13 @@ const RestaurantCategory = ({ resMenu }) => {
                 {resMenu?.card?.card?.itemCards?.length})
               </span>
               <span className="text-xl w-[10%] md:w-[5%]">
-                {isOpen ? "🔼" : "🔽"}
+                {showItems ? "🔼" : "🔽"}
               </span>
             </div>
           </button>
           <div
             className={`overflow-hidden transition-[max-height] duration-300 ${
-              isOpen ? "h-auto p-4" : "max-h-0"
+              showItems ? "h-auto p-4" : "max-h-0"
             }`}
           >
             {resMenu?.card?.card?.itemCards?.map((dish, index) => (
