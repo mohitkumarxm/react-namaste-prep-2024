@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { NavLink } from "react-router";
 import { LOGO_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
-
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   const onlineStatus = useOnlineStatus();
   return (
     <div className="flex justify-between bg-pink-100 shadow-2xl shadow-amber-200">
@@ -34,7 +36,7 @@ const Header = () => {
             <NavLink to="/contact">Contact Us</NavLink>
           </li>
           <li className="px-4">
-            <NavLink to="/cart">Cart</NavLink>
+            <NavLink to="/cart">Cart ({cartItems.length})</NavLink>
           </li>
           <button
             className="login"

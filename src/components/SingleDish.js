@@ -1,10 +1,11 @@
 import React from "react";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 import { CON_URL } from "../utils/constants";
 
 const SingleDish = ({ dish }) => {
-  const handleClick = () => {
-    console.log("click==");
-  };
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="grid  grid-cols-[70%_30%] gap-4 py-8 px-4 border-b-2">
@@ -29,7 +30,7 @@ const SingleDish = ({ dish }) => {
           />
           <button
             className="absolute bottom-[-20px] bg-amber-400 font-bold py-2 px-10 rounded-md"
-            onClick={() => handleClick()}
+            onClick={() => dispatch(addItem(dish))}
           >
             Add
           </button>

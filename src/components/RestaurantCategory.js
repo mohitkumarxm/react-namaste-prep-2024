@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-import ItemsList from "./ItemsList";
 import SingleDish from "./SingleDish";
 
 const RestaurantCategory = ({ resMenu, setShowIndex, showItems }) => {
-  console.log("RestaurantCategory = ", resMenu);
-
   return (
     <>
       {resMenu?.card?.card?.itemCards?.length > 0 ? (
@@ -30,7 +27,7 @@ const RestaurantCategory = ({ resMenu, setShowIndex, showItems }) => {
             }`}
           >
             {resMenu?.card?.card?.itemCards?.map((dish, index) => (
-              <div key={dish?.card?.info?.categoryId}>
+              <div key={index}>
                 <SingleDish dish={dish} />
               </div>
             ))}
