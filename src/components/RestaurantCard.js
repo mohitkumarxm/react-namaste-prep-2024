@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router";
 import { CON_URL } from "../utils/constants";
+
+import UserContext from "../utils/UserContext";
 
 const RestaurantCard = (props) => {
   const { id, name, cuisines, avgRating, sla, cloudinaryImageId } =
     props?.resData;
-  console.log("RestaurantCard");
+
+  const loggedInUser = useContext(UserContext);
+  console.log("Logged In User", loggedInUser);
+
   return (
     <NavLink to={"restaurants/" + id}>
       <div className="w-[250px] h-[450px] m-4 p-4 bg-red-100 rounded-sm border-2 border-red-100 cursor-pointer hover:border-black hover:shadow-xl hover:shadow-amber-200 hover:bg-red-300">
@@ -18,6 +23,7 @@ const RestaurantCard = (props) => {
         <h4 className="w-full mb-4">{cuisines.join(", ")}</h4>
         <h4 className="w-full mb-4">{avgRating} ⭐</h4>
         <h4 className="w-full mb-4">{sla.slaString}</h4>
+        <h4 className="w-full mb-4">{loggedInUser}</h4>
       </div>
     </NavLink>
   );

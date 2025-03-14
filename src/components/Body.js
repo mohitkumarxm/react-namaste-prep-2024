@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import resList from "../utils/mockData";
 import RestaurantCard, { openRestaurant } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import UserContext from "../utils/UserContext";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
@@ -13,6 +13,8 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
 
   const WithOpenStatusRestaurantCard = openRestaurant(RestaurantCard);
+
+  const { setUserName, loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -83,6 +85,14 @@ const Body = () => {
         >
           Top Rated Restaurants 😊
         </button>
+      </div>
+      <div className="flex justify-center my-4 py-4">
+        <input
+          className="border-black border-2 rounded-sm w-100 h-10 px-4"
+          type="text"
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
       <div className="flex flex-wrap justify-center">
         {filteredRestaurant.map((res) => (

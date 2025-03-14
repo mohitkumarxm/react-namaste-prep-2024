@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router";
 import { LOGO_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
   const cartItems = useSelector((store) => store.cart.items);
+
+  const loggedInUser = useContext(UserContext);
+  console.log("Logged In User", loggedInUser);
+
   console.log(cartItems);
   const onlineStatus = useOnlineStatus();
   return (
@@ -48,6 +53,9 @@ const Header = () => {
           >
             {btnNameReact}
           </button>
+          <li className="px-4 font-semibold">
+            <NavLink to="/cart">{loggedInUser}</NavLink>
+          </li>
         </ul>
       </div>
     </div>
